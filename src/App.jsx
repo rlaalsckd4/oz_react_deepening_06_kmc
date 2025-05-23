@@ -6,6 +6,7 @@ import Users from './pages/admin__users/Users';
 import UserDetail from './pages/admin__users/UserDetail';
 import Settings from './pages/admin__settings/Settings';
 import NotFound from './pages/admin__notfound/NotFound';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   //1. React Router의 `BrowserRouter`를 설정해야 합니다.
@@ -16,7 +17,18 @@ function App() {
   //6. /admin/settings에서 Settings를 렌더링 해야 합니다.
   //7. /admin/<잘못된 페이지명>에서 NotFound를 렌더링 해야 합니다.
 
-  return;
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path="/admin" element={<Layout />}>
+        <Route index element={<Dashboard />} /> {/* /admin */}
+        <Route path='users' element={<Users />} /> {/* /admin/users */}
+        <Route path='users/:id' element={<UserDetail />} /> {/* /admin/users/:id */}
+        <Route path='settings' element={<Settings />} /> {/* /admin/settings */}
+        <Route path='*' element={<NotFound />} /> {/* /admin/잘못된주소 */}
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
