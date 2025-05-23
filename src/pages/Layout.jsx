@@ -18,9 +18,10 @@ function Layout() {
           <Link to="/admin/settings">설정</Link>
           <Link to="/admin/잘못된경로">잘못된 페이지</Link>
         </div>
-        <div className="main-content"></div>
-        {/* 여기에 각 Route에 해당하는 컴포넌트가 렌더링됨 */}
+        <div className="main-content">
+          {/* 여기에 각 Route에 해당하는 컴포넌트가 렌더링됨 */}
         <Outlet />
+        </div>
       </div>
     </div>
   );
